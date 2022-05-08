@@ -17,7 +17,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config.update(SESSION_COOKIE_SAMESITE="None", SESSION_COOKIE_SECURE=True)
 
 Session(app)
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True,origin='http://www.homelessclearinghouse.com',headers=['Content-Type','Authorization'])
 
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///offers.db")
