@@ -17,7 +17,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config.update(SESSION_COOKIE_SAMESITE="None", SESSION_COOKIE_SECURE=True)
 
 Session(app)
-CORS(app, supports_credentials=True,origins=['http://www.homelessclearinghouse.com'],allow_headers='*')
+CORS(app, supports_credentials='true',origins=['http://www.homelessclearinghouse.com'],allow_headers='*')
 
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///offers.db")
@@ -29,10 +29,10 @@ def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Expires"] = 0
     response.headers["Pragma"] = "no-cache"
-    # response.headers["Access-Control-Allow-Origin"] = 'http://www.homelessclearinghouse.com'
-    # response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
-    # response.headers['Access-Control-Allow-Methods'] = 'POST,GET,PUT,DELETE'
-    # response.headers['Access-Control-Allow-Credentials'] = 'true'
+    response.headers["Access-Control-Allow-Origin"] = 'http://www.homelessclearinghouse.com'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
+    response.headers['Access-Control-Allow-Methods'] = 'POST,GET,PUT,DELETE'
+    response.headers['Access-Control-Allow-Credentials'] = 'true'
     return response
 
 @app.route("/auth", methods=["POST"])
