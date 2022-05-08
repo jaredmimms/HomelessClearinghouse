@@ -12,9 +12,9 @@ from werkzeug.security import check_password_hash, generate_password_hash
 app = Flask(__name__, template_folder='templates')
 
 # Configure session to use filesystem (instead of signed cookies)
-app.config["SESSION_PERMANENT"] = True
+app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-app.config.update(SESSION_COOKIE_SAMESITE="None", SESSION_COOKIE_SECURE=True)
+app.config.update(SESSION_COOKIE_SAMESITE="Lax", SESSION_COOKIE_SECURE=True)
 
 Session(app)
 CORS(app, supports_credentials=True,origins=['http://www.homelessclearinghouse.com'],allow_headers='*')
