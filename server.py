@@ -32,11 +32,11 @@ def after_request(response):
     response.headers["Access-Control-Allow-Origin"] = 'http://www.homelessclearinghouse.com'
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
     response.headers['Access-Control-Allow-Methods'] = 'POST,GET,PUT,DELETE'
-    response.headers['Access-Control-Allow-Credentials'] = True
+    response.headers['Access-Control-Allow-Credentials'] = 'true'
     return response
 
 @app.route("/auth", methods=["POST"])
-@cross_origin(origin='http://www.homelessclearinghouse.com',headers=['Content-Type','Authorization'],supports_credentials=True)
+@cross_origin()
 def auth():
     print(session.get("user_id"))
     if request.method == "POST" and session.get("user_id"):
@@ -51,7 +51,7 @@ def auth():
         return jsonify({'authenticated': False})
 
 @app.route("/offer", methods=["GET", "POST"])
-@cross_origin(origin='http://www.homelessclearinghouse.com',headers=['Content-Type','Authorization'],supports_credentials=True)
+@cross_origin()
 def offer():
     if request.method == "GET":
         offers = db.execute("SELECT * FROM offers")
@@ -63,7 +63,7 @@ def offer():
         return jsonify({'offer' : { 'id' : offer_id}})
 
 @app.route('/offerput/<offer_id>', methods=["PUT"])
-@cross_origin(origin='http://www.homelessclearinghouse.com',headers=['Content-Type','Authorization'],supports_credentials=True)
+@cross_origin()
 def offerPut(offer_id):
     if session.get("user_id"):
         data = request.get_json(silent=True)
@@ -72,14 +72,14 @@ def offerPut(offer_id):
         return jsonify({"success" : True})
 
 @app.route('/offerdelete/<offer_id>', methods=["DELETE"])
-@cross_origin(origin='http://www.homelessclearinghouse.com',headers=['Content-Type','Authorization'],supports_credentials=True)
+@cross_origin()
 def offerDelete(offer_id):
     if session.get("user_id"):
         db.execute("DELETE FROM offers WHERE id = ?", offer_id)
         return jsonify({"success" : True})
 
 @app.route("/login", methods=["POST"])
-@cross_origin(origin='http://www.homelessclearinghouse.com',headers=['Content-Type','Authorization'],supports_credentials=True)
+@cross_origin()
 def login():
     """Log user in"""
 
@@ -115,7 +115,7 @@ def login():
 
 
 @app.route("/logout", methods=["POST"])
-@cross_origin(origin='http://www.homelessclearinghouse.com',headers=['Content-Type','Authorization'],supports_credentials=True)
+@cross_origin()
 def logout():
     """Log user out"""
 
