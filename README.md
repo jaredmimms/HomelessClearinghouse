@@ -8,6 +8,7 @@ Homeless Clearinghouse allows an administrator to curate offers for the homeless
 
 ## Local Installation
 Run:
+
 `git clone git@github.com:jaredmimms/HomelessClearinghouse.git`
 
 `cd HomelessClearinghouse`
