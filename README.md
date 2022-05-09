@@ -37,7 +37,9 @@ For Ubuntu if pip not installed:
 `flask run`
 
 Local Login Admin:
+
 email: admin@homelessclearinghouse.com
+
 password: cs50authentication
 
 Visit [http://localhost:8080](http://localhost:8080)
