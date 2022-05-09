@@ -9,18 +9,31 @@ Homeless Clearinghouse allows an administrator to curate offers for the homeless
 ## Local Installation
 Run:
 `git clone git@github.com:jaredmimms/HomelessClearinghouse.git`
+
 `cd HomelessClearinghouse`
+
 `npm install`
+
 `npm run serve`
+
 For Ubuntu if pip not installed:
+
 `sudo apt-get -y install python3-pip`
+
 /Ubuntu
+
 `pip3 install cs50`
+
 `pip3 install flask`
+
 `pip3 install flask_session`
+
 `pip3 install flask_cors`
+
 `pip3 install werkzeug`
+
 `export FLASK_APP=server`
+
 `flask run`
 
 Local Login Admin:
